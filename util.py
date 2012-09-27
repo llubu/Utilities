@@ -1,4 +1,4 @@
-# Utility to check for any new jobs in C:\~Jetmobile\~Jobs folder & display some info about them
+# Utility to check for any new filecreation in path specified by path & display some content from them
 # author Abhiroop Dabral
 # v 1.0
 
@@ -11,9 +11,8 @@ import win32event
 import win32con
 import string
 
-path = r"C:\Program Files\Jetmobile\SecureJet Server Services\Jobs\USER\ABCD" # Path to watch for
-#path= r"C:\Users\dZONE\Desktop\py"
-
+path= r"C:\Users\dZONE\Desktop\py"
+# path to watch for
 change_handle = win32file.FindFirstChangeNotification (path,0,win32con.FILE_NOTIFY_CHANGE_FILE_NAME)
 
 try:
@@ -31,7 +30,7 @@ try:
 	  # My open
       for item in added:
        #print item
-       match_hdr = re.search(r'\.sjs_hdr$',item,re.M)
+       match_hdr = re.search(r'\.hdr$',item,re.M)
        if match_hdr:
          #print "HDR FOUND"
          fullfilename = os.path.join(path, item)
