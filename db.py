@@ -2,7 +2,7 @@
 Command line utility to:
 1. Get the dropbox folders list.
 2. Upload the contents of local folder to a specific folder on DB
-@author dZONE
+@author Abhiroop Dabral - abhiroop.dabral@gmail.com
 DATE(C,M) 07-27-2014, 07-27-2014
 """
 

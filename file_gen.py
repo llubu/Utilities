@@ -1,4 +1,5 @@
-# Utility to check for any new filecreation in path specified by path & display some content from them
+# Utility to check for any new file creation in path specified 
+# by path & display some content from them
 # author Abhiroop Dabral
 # v 1.0
 
@@ -12,6 +13,7 @@ import win32con
 import string
 
 path= r"C:\Users\dZONE\Desktop\py"
+
 # path to watch for
 change_handle = win32file.FindFirstChangeNotification (path,0,win32con.FILE_NOTIFY_CHANGE_FILE_NAME)
 
