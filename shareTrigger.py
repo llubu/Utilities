@@ -37,6 +37,7 @@ while (1):
 
     price = float(data[0]['LastTradePrice'])
 
+    print "Current Time(local) -" , datetime.now().time()
     print json.dumps(data, indent=2)
 
     if lastValue >= 0:
