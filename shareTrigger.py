@@ -16,10 +16,10 @@ from pytz import timezone
 symbol = "PANW"
 trigger = 1
 freq = 600
-srcmail = "send@gmail.com"
-dstmail = 'rcv@gmail.com'
+srcmail = "adabral333@gmail.com"
+dstmail = 'abhiroop.dabral@gmail.com'
 smtpServer = 'smtp.gmail.com:587'
-password = "*******"
+password = "******"
 lastValue = 0
 data = []
 
@@ -30,7 +30,7 @@ while (1):
     nyseShutdown = nycTime.replace(hour=20, minute=0, second=0, microsecond=0)
 
     if ((nycTime > nyseShutdown) or (nycTime < nyseStart)):
-	    break
+	    continue;
 
     data = (getQuotes(symbol))
     datastr = json.dumps(data, indent=2)
@@ -38,11 +38,14 @@ while (1):
     price = float(data[0]['LastTradePrice'])
 
     print "Current Time(local) -" , datetime.now().time()
-    print json.dumps(data, indent=2)
+    print price, ":  ",
+    print data[0]['LastTradeDateTimeLong']
+
+#print json.dumps(data, indent=2)
 
     if lastValue >= 0:
         lastValue = price
-    elif (1 <= (abs(lastValue - price))):
+    elif ((1 <= (abs(lastValue - price))) or (price >= 186)):
         msg = MIMEText("PANW - LastPrice= " + str(lastValue) + '\n' + datastr + "\n")
         msg['Subject'] = 'Trigger PANW. %s' % str(price)
         msg['From'] = srcmail
